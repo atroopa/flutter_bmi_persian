@@ -15,6 +15,8 @@ class _HomescreenState extends State<Homescreen> {
   TextEditingController _heighController = TextEditingController();
   TextEditingController _weightController = TextEditingController();
 
+  double _bmiResult = 0;
+  String _textResult = "";
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +45,7 @@ class _HomescreenState extends State<Homescreen> {
                   margin: EdgeInsets.only(left:50),
                   width: 130,
                   child: TextField(
+                    controller: _heighController,
                     style: TextStyle(
                       fontSize: 42,fontWeight: FontWeight.w300,
                       color: accentHexColor
@@ -62,6 +65,7 @@ class _HomescreenState extends State<Homescreen> {
                 Container(
                   width: 130,
                   child: TextField(
+                    controller: _weightController,
                     style: TextStyle(
                       fontSize: 42,fontWeight: FontWeight.w300,
                       color: accentHexColor
@@ -81,17 +85,22 @@ class _HomescreenState extends State<Homescreen> {
               ],
             ),
             SizedBox(height: 30,),
-            Container(
-              child: Text("نتیجه",
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: accentHexColor
+            GestureDetector(
+              onTap: (){
+                
+              },
+              child: Container(
+                child: Text("نتیجه",
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: accentHexColor
+                  ),
                 ),
               ),
             ),
             Container(
-              child: Text("10",
+              child: Text(_bmiResult.toStringAsFixed(2),
                 style: TextStyle(
                   fontSize: 90,
                   
@@ -100,16 +109,19 @@ class _HomescreenState extends State<Homescreen> {
               ),
             ),
             SizedBox(height: 30,),
-            Container(
-              child: Text(
-                "وزن نرمال",
-                style: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.w400,
-                  color: accentHexColor,
+            Visibility(
+              visible: _textResult.isEmpty,
+              child:Container(
+                child: Text(
+                  _textResult,
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.w400,
+                    color: accentHexColor,
+                  ),
                 ),
+              ), 
               ),
-            ),
             SizedBox(height: 10,),
             LeftBar(40),
             SizedBox(height: 20,),
