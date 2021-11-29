@@ -87,7 +87,18 @@ class _HomescreenState extends State<Homescreen> {
             SizedBox(height: 30,),
             GestureDetector(
               onTap: (){
-                
+                double _h = double.parse(_heighController.text);
+                double _w = double.parse(_weightController.text);
+                setState(() {
+                  _bmiResult = _w / (_h * _h);
+                  if(_bmiResult > 25){
+                    _textResult = "You\'re over weight" ;
+                  }else if(_bmiResult >= 18.5 && _bmiResult <= 25){
+                    _textResult = "You have normal weight" ;
+                  }else{
+                    _textResult = "You\'re under weight" ;
+                  }
+                });
               },
               child: Container(
                 child: Text("نتیجه",
