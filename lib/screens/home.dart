@@ -121,10 +121,10 @@ class _HomescreenState extends State<Homescreen> {
             ),
             SizedBox(height: 30,),
             Visibility(
-              visible: _textResult.isEmpty,
+              visible: _textResult.isNotEmpty,
               child:Container(
                 child: Text(
-                  _textResult,
+                  "$_textResult",
                   style: TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.w400,
