@@ -23,7 +23,7 @@ class _HomescreenState extends State<Homescreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "BMI Calculator",
+          "دقیق ترین معیار جهانی چاقی",
           style: TextStyle(
             color: accentHexColor,
             fontWeight: FontWeight.w300,
@@ -42,7 +42,6 @@ class _HomescreenState extends State<Homescreen> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Container(
-                  margin: EdgeInsets.only(left:50),
                   width: 130,
                   child: TextField(
                     controller: _heighController,
@@ -53,9 +52,9 @@ class _HomescreenState extends State<Homescreen> {
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: "قد",
+                      hintText: "(متر)قد",
                       hintStyle: TextStyle(
-                        fontSize: 42,
+                        fontSize: 25,
                         fontWeight: FontWeight.w300,
                         color: Colors.white.withOpacity(.8)
                       ),
@@ -73,9 +72,9 @@ class _HomescreenState extends State<Homescreen> {
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: "وزن",
+                      hintText: "(کیلوگرم)وزن",
                       hintStyle: TextStyle(
-                        fontSize: 42,
+                        fontSize: 25,
                         fontWeight: FontWeight.w300,
                         color: Colors.white.withOpacity(.8)
                       ),
@@ -92,16 +91,19 @@ class _HomescreenState extends State<Homescreen> {
                 setState(() {
                   _bmiResult = _w / (_h * _h);
                   if(_bmiResult > 25){
-                    _textResult = "You\'re over weight" ;
+                    _textResult = "شما اضافه وزن دارید" ;
                   }else if(_bmiResult >= 18.5 && _bmiResult <= 25){
-                    _textResult = "You have normal weight" ;
+                    _textResult = "وزن شما نرمال می باشد" ;
                   }else{
-                    _textResult = "You\'re under weight" ;
+                    _textResult = "شما کبمود وزن دارید" ;
                   }
                 });
               },
               child: Container(
-                child: Text("نتیجه",
+                color: Colors.black87,
+                padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
+
+                child: Text("محاسبه کن",
                   style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
@@ -111,6 +113,7 @@ class _HomescreenState extends State<Homescreen> {
               ),
             ),
             Container(
+              margin: EdgeInsets.only(top: 15),
               child: Text(_bmiResult.toStringAsFixed(2),
                 style: TextStyle(
                   fontSize: 90,
